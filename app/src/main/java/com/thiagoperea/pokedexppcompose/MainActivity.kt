@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.ui.Modifier
 import com.thiagoperea.pokedexppcompose.ui.feature.poke_detail.PokeDetailScreen
+import com.thiagoperea.pokedexppcompose.ui.feature.poke_list.PokeListScreen
 import com.thiagoperea.pokedexppcompose.ui.theme.PokedexComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                 ) { paddingValues ->
 
-                    PokeDetailScreen()
+                    PokeListScreen()
                 }
             }
         }
