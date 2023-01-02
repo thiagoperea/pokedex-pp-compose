@@ -20,12 +20,17 @@ import com.thiagoperea.pokedexppcompose.R
 import com.thiagoperea.pokedexppcompose.ui.theme.lightGray
 
 @Composable
-fun SearchField() {
+fun SearchField(
+    onSearchTextChanged: (String) -> Unit
+) {
     val searchInput = remember { mutableStateOf("") }
 
     TextField(
         value = searchInput.value,
-        onValueChange = { searchInput.value = it },
+        onValueChange = {
+            onSearchTextChanged(it)
+            searchInput.value = it
+        },
         textStyle = LocalTextStyle.current.copy(
             fontSize = 12.sp,
             textAlign = TextAlign.Center,

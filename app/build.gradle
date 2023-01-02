@@ -69,7 +69,15 @@ dependencies {
     // unit tests
     testImplementation 'junit:junit:4.13.2'
 
-    // espresso (do I need all of it?
+    // DI
+    implementation "io.insert-koin:koin-android:3.3.2"
+    implementation "io.insert-koin:koin-androidx-compose:3.4.1"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime:3.1.1"
+    implementation("androidx.paging:paging-compose:1.0.0-alpha17")
+
+    // espresso
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"

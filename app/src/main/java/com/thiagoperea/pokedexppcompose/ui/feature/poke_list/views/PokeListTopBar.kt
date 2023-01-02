@@ -1,12 +1,7 @@
 package com.thiagoperea.pokedexppcompose.ui.feature.poke_list.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -20,7 +15,9 @@ import androidx.compose.ui.unit.sp
 import com.thiagoperea.pokedexppcompose.R
 
 @Composable
-fun PokeListTopBar() {
+fun PokeListTopBar(
+    onSortClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .height(IntrinsicSize.Min)
@@ -42,7 +39,7 @@ fun PokeListTopBar() {
         )
 
         IconButton(
-            onClick = {},
+            onClick = { onSortClick() },
             modifier = Modifier.size(48.dp)
         ) {
             Icon(
