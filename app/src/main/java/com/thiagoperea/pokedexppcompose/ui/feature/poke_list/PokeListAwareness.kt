@@ -6,8 +6,6 @@ sealed class PokeListEvent {
 
     object LoadScreen : PokeListEvent()
 
-    object OnSortChange : PokeListEvent()
-
     data class OnSearch(val query: String) : PokeListEvent()
 }
 

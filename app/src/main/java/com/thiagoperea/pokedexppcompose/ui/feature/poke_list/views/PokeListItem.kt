@@ -8,20 +8,21 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.thiagoperea.pokedexppcompose.R
 import com.thiagoperea.pokedexppcompose.data.model.PokeData
 import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
-import com.thiagoperea.pokedexppcompose.ui.theme.PokedexComposeTheme
+import com.thiagoperea.pokedexppcompose.ui.theme.AppFonts
 
 @Composable
 fun PokeListItem(
@@ -33,20 +34,22 @@ fun PokeListItem(
         modifier = Modifier
             .height(112.dp)
             .width(104.dp)
-            .border(1.dp, firstTypeColor, RoundedCornerShape(16.dp))
+            .border(1.dp, firstTypeColor, RoundedCornerShape(8.dp))
     ) {
         Text(
-            text = pokeData.id.toString(),
-            textAlign = TextAlign.End,
-            fontSize = 10.sp,
-            color = firstTypeColor,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 4.dp, end = 8.dp),
+            text = stringResource(R.string.id_number, pokeData.id.toString().padStart(3, '0')),
+            textAlign = TextAlign.End,
+            color = firstTypeColor,
+            fontSize = 8.sp,
+            fontFamily = AppFonts.poppins,
+            fontWeight = FontWeight.Normal
         )
 
         AsyncImage(
-            model = pokeData.spriteUrl,
+            model = pokeData.officialUrl,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -54,15 +57,17 @@ fun PokeListItem(
         )
 
         Text(
-            text = pokeData.name,
-            textAlign = TextAlign.Center,
-            fontSize = 12.sp,
-            color = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
+                .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
                 .background(firstTypeColor)
-                .padding(vertical = 4.dp, horizontal = 8.dp)
+                .padding(vertical = 2.dp, horizontal = 8.dp),
+            text = pokeData.name,
+            textAlign = TextAlign.Center,
+            color = Color.White,
+            fontSize = 10.sp,
+            fontFamily = AppFonts.poppins,
+            fontWeight = FontWeight.Normal
         )
     }
 }

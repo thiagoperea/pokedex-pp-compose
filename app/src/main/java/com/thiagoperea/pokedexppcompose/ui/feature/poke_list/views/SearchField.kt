@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,11 +23,15 @@ import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 @Composable
 fun SearchField(
+    modifier: Modifier = Modifier,
     onSearchTextChanged: (String) -> Unit
 ) {
     val searchInput = remember { mutableStateOf("") }
 
     TextField(
+        modifier = modifier
+            .fillMaxWidth()
+            .border(1.dp, AppColors.lightGray, RoundedCornerShape(16.dp)),
         value = searchInput.value,
         onValueChange = {
             onSearchTextChanged(it)
@@ -41,6 +47,7 @@ fun SearchField(
             unfocusedIndicatorColor = Color.Transparent,
         ),
         shape = RoundedCornerShape(16.dp),
+        label = { Text(stringResource(R.string.search)) },
 //            label = {
 //
 //                /**
@@ -73,8 +80,5 @@ fun SearchField(
             Icon(painterResource(R.drawable.ic_search), null)
         },
         singleLine = true,
-        modifier = Modifier
-            .fillMaxWidth()
-            .border(1.dp, AppColors.lightGray, RoundedCornerShape(16.dp)),
     )
 }

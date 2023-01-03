@@ -18,7 +18,6 @@ class PokeListViewModel(
         when (event) {
             is PokeListEvent.LoadScreen -> loadPokemons()
             is PokeListEvent.OnSearch -> searchQuery(event.query)
-            is PokeListEvent.OnSortChange -> toggleSort()
         }
     }
 
@@ -38,10 +37,6 @@ class PokeListViewModel(
     }
 
     private fun searchQuery(query: String) {
-
-    }
-
-    private fun toggleSort() {
 
     }
 }

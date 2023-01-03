@@ -25,13 +25,15 @@ class PokeRepository(
                 val localData = database.getById(idToLoad)
                 if (localData != null) {
                     responseList.add(localData)
+                    idToLoad++
                     return@repeat
                 }
 
-                // Otherwise, load from backend and save to local database
+                // Otherwise, load from backend
                 val remoteData = api.getPokemonFromId(idToLoad)
                 val mappedResponse = PokeDataMapper.map(remoteData)
 
+                // Then save it to local database
                 saveResponseToDatabase(mappedResponse)
                 responseList.add(mappedResponse)
                 idToLoad++
@@ -49,6 +51,6 @@ class PokeRepository(
      * Save backend response into database
      */
     private fun saveResponseToDatabase(response: PokeData) {
-        // Save it into room
+        database.insert(response)
     }
 }

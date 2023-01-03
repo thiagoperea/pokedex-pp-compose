@@ -3,13 +3,14 @@ package com.thiagoperea.pokedexppcompose.ui.feature.poke_list
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -29,25 +30,25 @@ fun PokeListScreenContent(
         modifier = modifier
             .fillMaxSize()
             .background(AppColors.bgGray)
-            .padding(start = 24.dp, top = 32.dp, end = 24.dp),
     ) {
 
         PokeListTopBar(
-            onSortClick = { onEvent(PokeListEvent.OnSortChange) }
+            modifier = Modifier.padding(start = 24.dp, top = 32.dp, end = 24.dp),
         )
 
-        Spacer(Modifier.height(8.dp))
         SearchField(
+            modifier = Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp),
             onSearchTextChanged = { query ->
                 onEvent(PokeListEvent.OnSearch(query))
             }
         )
 
-        Spacer(Modifier.height(16.dp))
         LazyVerticalGrid(
+            modifier = Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp),
             columns = GridCells.Fixed(3),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(vertical = 16.dp)
         ) {
 
             items(
