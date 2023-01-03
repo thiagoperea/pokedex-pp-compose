@@ -1,6 +1,7 @@
 package com.thiagoperea.pokedexppcompose.ui.feature.poke_list
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,7 +23,8 @@ import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 fun PokeListScreenContent(
     modifier: Modifier = Modifier,
     pokeList: List<PokeData>,
-    onEvent: (PokeListEvent) -> Unit
+    onSearchSubmit: (String) -> Unit,
+    onItemClick: (Int) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -38,9 +38,7 @@ fun PokeListScreenContent(
 
         SearchField(
             modifier = Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp),
-            onSearchTextChanged = { query ->
-                onEvent(PokeListEvent.OnSearch(query))
-            }
+            onSearchTextChanged = { query -> onSearchSubmit(query) }
         )
 
         LazyVerticalGrid(
@@ -55,7 +53,11 @@ fun PokeListScreenContent(
                 items = pokeList,
                 key = { it.id }
             ) { pokeData ->
-                PokeListItem(pokeData)
+
+                PokeListItem(
+                    modifier = Modifier.clickable { onItemClick(pokeData.id) },
+                    data = pokeData
+                )
             }
         }
     }

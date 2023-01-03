@@ -18,6 +18,7 @@ class PokeListViewModel(
         when (event) {
             is PokeListEvent.LoadScreen -> loadPokemons()
             is PokeListEvent.OnSearch -> searchQuery(event.query)
+            is PokeListEvent.OnItemClick -> onItemClick(event.id)
         }
     }
 
@@ -37,6 +38,10 @@ class PokeListViewModel(
     }
 
     private fun searchQuery(query: String) {
+
+    }
+
+    private fun onItemClick(pokeId: Int) {
 
     }
 }

@@ -10,6 +10,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun PokeListScreen(
     modifier: Modifier = Modifier,
+    onNavigateToDetails: (Int) -> Unit = {},
     viewModel: PokeListViewModel = koinViewModel()
 ) {
 
@@ -24,8 +25,11 @@ fun PokeListScreen(
     ) {
         PokeListScreenContent(
             pokeList = state.pokeList,
-            onEvent = { event ->
-                viewModel.setEvent(event)
+            onSearchSubmit = { query ->
+                viewModel.setEvent(PokeListEvent.OnSearch(query))
+            },
+            onItemClick = { id ->
+                onNavigateToDetails(id)
             }
         )
 

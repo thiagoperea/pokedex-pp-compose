@@ -7,6 +7,8 @@ sealed class PokeListEvent {
     object LoadScreen : PokeListEvent()
 
     data class OnSearch(val query: String) : PokeListEvent()
+
+    data class OnItemClick(val id: Int) : PokeListEvent()
 }
 
 sealed class PokeListState(val pokeList: List<PokeData> = listOf()) {

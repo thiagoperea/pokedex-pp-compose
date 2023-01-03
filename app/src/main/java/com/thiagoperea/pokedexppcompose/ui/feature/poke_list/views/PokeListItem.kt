@@ -26,12 +26,13 @@ import com.thiagoperea.pokedexppcompose.ui.theme.AppFonts
 
 @Composable
 fun PokeListItem(
-    pokeData: PokeData
+    modifier: Modifier = Modifier,
+    data: PokeData
 ) {
-    val firstTypeColor = pokeData.typeList.firstOrNull()?.color ?: AppColors.lightGray
+    val firstTypeColor = data.typeList.firstOrNull()?.color ?: AppColors.lightGray
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .height(112.dp)
             .width(104.dp)
             .border(1.dp, firstTypeColor, RoundedCornerShape(8.dp))
@@ -40,7 +41,7 @@ fun PokeListItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 4.dp, end = 8.dp),
-            text = stringResource(R.string.id_number, pokeData.id.toString().padStart(3, '0')),
+            text = stringResource(R.string.id_number, data.id.toString().padStart(3, '0')),
             textAlign = TextAlign.End,
             color = firstTypeColor,
             fontSize = 8.sp,
@@ -49,7 +50,7 @@ fun PokeListItem(
         )
 
         AsyncImage(
-            model = pokeData.officialUrl,
+            model = data.officialUrl,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -62,7 +63,7 @@ fun PokeListItem(
                 .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
                 .background(firstTypeColor)
                 .padding(vertical = 2.dp, horizontal = 8.dp),
-            text = pokeData.name,
+            text = data.name,
             textAlign = TextAlign.Center,
             color = Color.White,
             fontSize = 10.sp,

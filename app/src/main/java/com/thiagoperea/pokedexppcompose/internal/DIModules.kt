@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.thiagoperea.pokedexppcompose.data.local.database.PokeDB
 import com.thiagoperea.pokedexppcompose.data.remote.PokeApi
 import com.thiagoperea.pokedexppcompose.repository.PokeRepository
+import com.thiagoperea.pokedexppcompose.ui.feature.poke_detail.PokeDetailViewModel
 import com.thiagoperea.pokedexppcompose.ui.feature.poke_list.PokeListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,5 +54,7 @@ object DIModules {
 
     private val viewModelModule = module {
         viewModel { PokeListViewModel(get()) }
+
+        viewModel { PokeDetailViewModel(get()) }
     }
 }
