@@ -2,11 +2,6 @@ package com.thiagoperea.pokedexppcompose.data.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class PokemonResponsePaginated(
-    val nextUrl: String?,
-    val results: List<PokemonResponse>
-)
-
 data class PokemonResponse(
     val id: Int,
     val name: String,

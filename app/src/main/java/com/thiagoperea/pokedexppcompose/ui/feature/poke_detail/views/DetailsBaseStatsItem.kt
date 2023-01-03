@@ -25,8 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 import com.thiagoperea.pokedexppcompose.ui.theme.PokedexComposeTheme
-import com.thiagoperea.pokedexppcompose.ui.theme.grass
 
 @Composable
 fun DetailsBaseStatsItem() {
@@ -43,7 +43,7 @@ fun DetailsBaseStatsItem() {
 
             Text(
                 text = "HP",
-                color = grass,
+                color = AppColors.grass,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.End,
@@ -68,7 +68,7 @@ fun DetailsBaseStatsItem() {
                     .fillMaxWidth()
                     .padding(start = 8.dp, end = 8.dp)
                     .clip(RoundedCornerShape(16.dp)),
-                color = grass,
+                color = AppColors.grass,
                 progress = 0.5f
             )
         }

@@ -16,14 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.thiagoperea.pokedexppcompose.R
-import com.thiagoperea.pokedexppcompose.ui.theme.grass
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 @Composable
 fun BackgroundView() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(grass),
+            .background(AppColors.grass),
         horizontalAlignment = Alignment.End
     ) {
         Image(

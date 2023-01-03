@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.thiagoperea.pokedexppcompose.ui.theme.grass
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 
 @Composable
@@ -44,7 +44,7 @@ fun ForegroundView() {
             text = "About",
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
-            color = grass
+            color = AppColors.grass
         )
 
         Spacer(Modifier.height(16.dp))
@@ -63,7 +63,7 @@ fun ForegroundView() {
             text = "Base Stats",
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
-            color = grass
+            color = AppColors.grass
         )
 
         Spacer(Modifier.height(16.dp))

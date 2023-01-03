@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.thiagoperea.pokedexppcompose.ui.theme.bgLoading
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 @Composable
 fun LoadingBox() {
@@ -17,7 +17,7 @@ fun LoadingBox() {
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(bgLoading)
+            .background(AppColors.bgLoading)
     ) {
 
         CircularProgressIndicator(

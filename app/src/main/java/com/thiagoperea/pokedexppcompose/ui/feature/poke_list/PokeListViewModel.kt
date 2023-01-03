@@ -27,8 +27,9 @@ class PokeListViewModel(
 
             try {
                 val pokeList = withContext(Dispatchers.IO) {
-                    repository.getAllPokemon()
+                    repository.loadPokemonList()
                 }
+
                 screenState.value = PokeListState.Success(pokeList)
             } catch (error: Exception) {
                 screenState.value = PokeListState.Error

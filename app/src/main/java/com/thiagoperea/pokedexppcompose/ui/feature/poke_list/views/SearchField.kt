@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.thiagoperea.pokedexppcompose.R
-import com.thiagoperea.pokedexppcompose.ui.theme.lightGray
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 @Composable
 fun SearchField(
@@ -75,6 +75,6 @@ fun SearchField(
         singleLine = true,
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, lightGray, RoundedCornerShape(16.dp)),
+            .border(1.dp, AppColors.lightGray, RoundedCornerShape(16.dp)),
     )
 }

@@ -20,31 +20,33 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.thiagoperea.pokedexppcompose.data.model.PokeData
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 import com.thiagoperea.pokedexppcompose.ui.theme.PokedexComposeTheme
-import com.thiagoperea.pokedexppcompose.ui.theme.grass
 
 @Composable
 fun PokeListItem(
     pokeData: PokeData
 ) {
+    val firstTypeColor = pokeData.typeList.firstOrNull()?.color ?: AppColors.lightGray
+
     Column(
         modifier = Modifier
             .height(112.dp)
             .width(104.dp)
-            .border(1.dp, grass, RoundedCornerShape(16.dp))
+            .border(1.dp, firstTypeColor, RoundedCornerShape(16.dp))
     ) {
         Text(
             text = pokeData.id.toString(),
             textAlign = TextAlign.End,
             fontSize = 10.sp,
-            color = grass,
+            color = firstTypeColor,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 4.dp, end = 8.dp),
         )
 
         AsyncImage(
-            model = pokeData.imageUrl,
+            model = pokeData.spriteUrl,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -59,20 +61,8 @@ fun PokeListItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
-                .background(grass)
+                .background(firstTypeColor)
                 .padding(vertical = 4.dp, horizontal = 8.dp)
         )
-    }
-}
-
-@Preview
-@Composable
-fun PreviewPokeListItem() {
-    PokedexComposeTheme {
-        Surface {
-            val toShow = PokeData(1, "Bulbasaur", "grass", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")
-
-            PokeListItem(toShow)
-        }
     }
 }

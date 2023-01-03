@@ -12,15 +12,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.thiagoperea.pokedexppcompose.ui.theme.grass
-import com.thiagoperea.pokedexppcompose.ui.theme.poison
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 @Composable
 fun DetailsTypeList() {
     LazyRow {
         val types = listOf(
-            "Grass" to grass,
-            "Poison" to poison
+            "Grass" to AppColors.grass,
+            "Poison" to AppColors.poison
         )
 
         items(types) { type ->

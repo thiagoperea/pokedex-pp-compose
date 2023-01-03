@@ -1,7 +1,12 @@
 package com.thiagoperea.pokedexppcompose.ui.feature.poke_list
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -12,7 +17,7 @@ import com.thiagoperea.pokedexppcompose.data.model.PokeData
 import com.thiagoperea.pokedexppcompose.ui.feature.poke_list.views.PokeListItem
 import com.thiagoperea.pokedexppcompose.ui.feature.poke_list.views.PokeListTopBar
 import com.thiagoperea.pokedexppcompose.ui.feature.poke_list.views.SearchField
-import com.thiagoperea.pokedexppcompose.ui.theme.bgGray
+import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
 
 @Composable
 fun PokeListScreenContent(
@@ -23,7 +28,7 @@ fun PokeListScreenContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(bgGray)
+            .background(AppColors.bgGray)
             .padding(start = 24.dp, top = 32.dp, end = 24.dp),
     ) {
 
@@ -45,7 +50,10 @@ fun PokeListScreenContent(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
 
-            items(pokeList) { pokeData ->
+            items(
+                items = pokeList,
+                key = { it.id }
+            ) { pokeData ->
                 PokeListItem(pokeData)
             }
         }

@@ -19,7 +19,9 @@ fun PokeListScreen(
 
     val state = viewModel.screenState.value
 
-    Box {
+    Box(
+        modifier = modifier
+    ) {
         PokeListScreenContent(
             pokeList = state.pokeList,
             onEvent = { event ->
