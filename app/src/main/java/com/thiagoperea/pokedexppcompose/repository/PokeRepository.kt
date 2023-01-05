@@ -34,7 +34,7 @@ class PokeRepository(
                 val mappedResponse = PokeDataMapper.map(remoteData)
 
                 // Then save it to local database
-                saveResponseToDatabase(mappedResponse)
+                database.insert(mappedResponse)
                 responseList.add(mappedResponse)
                 idToLoad++
             }
@@ -47,10 +47,23 @@ class PokeRepository(
         }
     }
 
-    /**
-     * Save backend response into database
-     */
-    private fun saveResponseToDatabase(response: PokeData) {
-        database.insert(response)
+    suspend fun loadPokemonDetails(id: Int): PokeData {
+        // Try to load data from database
+        var data: PokeData? = database.getById(id)
+
+        if (data == null) {
+            val apiResponse = api.getPokemonFromId(id)
+            data = PokeDataMapper.map(apiResponse)
+            database.insert(data)
+        }
+
+        // Check if it need to load description
+        if (data.description == null) {
+            val apiResponse = api.getDescription(id)
+            data.description = PokeDataMapper.mapDescription(apiResponse)
+            // TODO: UPDATE MY DATABASE WITH THIS DATA
+        }
+
+        return data
     }
 }

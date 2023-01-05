@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,13 +18,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.thiagoperea.pokedexppcompose.R
 
 @Composable
-fun DetailsAboutContent() {
+fun DetailsAboutContent(
+    weight: Int,
+    height: Int,
+    moves: List<String>
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,24 +40,24 @@ fun DetailsAboutContent() {
 
         DetailsAboutContentItem(
             iconId = R.drawable.ic_weight,
-            topDescription = "6,9 kg",
-            bottomDescription = "Weight"
+            topDescription = "$weight kg",
+            bottomDescription = stringResource(R.string.weight)
         )
 
         DetailsAboutDivider()
 
         DetailsAboutContentItem(
             iconId = R.drawable.ic_rule,
-            topDescription = "0,7 m",
-            bottomDescription = "Height"
+            topDescription = "$height m",
+            bottomDescription = stringResource(R.string.height)
         )
 
         DetailsAboutDivider()
 
         DetailsAboutContentItem(
             iconId = null,
-            topDescription = "Chlorophyll\nOvergrow",
-            bottomDescription = "Moves"
+            topDescription = moves.joinToString(separator = "\n"),
+            bottomDescription = stringResource(R.string.moves)
         )
     }
 }

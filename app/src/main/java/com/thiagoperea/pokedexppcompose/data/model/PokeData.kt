@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class PokeData(
     @PrimaryKey val id: Int,
     val name: String,
-    val description: String,
+    var description: String?,
     val spriteUrl: String,
     val officialUrl: String,
     val typeList: List<PokeType>,

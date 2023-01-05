@@ -3,6 +3,7 @@ package com.thiagoperea.pokedexppcompose.data.mapper
 import com.thiagoperea.pokedexppcompose.data.model.PokeData
 import com.thiagoperea.pokedexppcompose.data.model.PokeDataStats
 import com.thiagoperea.pokedexppcompose.data.model.PokeType
+import com.thiagoperea.pokedexppcompose.data.remote.DescriptionResponse
 import com.thiagoperea.pokedexppcompose.data.remote.PokemonResponse
 import com.thiagoperea.pokedexppcompose.data.remote.PokemonStatsResponse
 import com.thiagoperea.pokedexppcompose.data.remote.PokemonTypeResponse
@@ -13,7 +14,7 @@ object PokeDataMapper {
         return PokeData(
             id = backendResponse.id,
             name = backendResponse.name,
-            description = "",
+            description = null,
             spriteUrl = backendResponse.sprites.frontUrl,
             officialUrl = backendResponse.sprites.otherUrls.officialUrl.url,
             typeList = mapTypeList(backendResponse.types),
@@ -34,4 +35,10 @@ object PokeDataMapper {
     )
 
     private fun mapTypeList(typeList: List<PokemonTypeResponse>) = typeList.map { enumValueOf<PokeType>(it.description.name.uppercase()) }
+
+    fun mapDescription(backendResponse: DescriptionResponse): String {
+        return backendResponse.descriptionList
+            .firstOrNull()?.description
+            ?.replace("\n", " ") ?: ""
+    }
 }

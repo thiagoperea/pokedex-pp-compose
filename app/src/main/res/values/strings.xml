@@ -3,4 +3,9 @@
     <string name="search">Procurar</string>
     <string name="id_number">#%s</string>
     <string name="pokedex">Pokédex</string>
+    <string name="about">Sobre</string>
+    <string name="base_stats">Stats Base</string>
+    <string name="moves">Ataques</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
 </resources>

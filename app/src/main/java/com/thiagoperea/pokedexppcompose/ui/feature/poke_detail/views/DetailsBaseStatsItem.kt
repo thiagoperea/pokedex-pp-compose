@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,14 +21,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.thiagoperea.pokedexppcompose.ui.theme.AppColors
-import com.thiagoperea.pokedexppcompose.ui.theme.PokedexComposeTheme
 
 @Composable
-fun DetailsBaseStatsItem() {
+fun DetailsBaseStatsItem(
+    color: Color,
+    name: String,
+    value: Int
+) {
+
+    val progress = 255f / value
+
     Column(
         modifier = Modifier
             .height(IntrinsicSize.Min)
@@ -42,12 +45,12 @@ fun DetailsBaseStatsItem() {
         ) {
 
             Text(
-                text = "HP",
-                color = AppColors.grass,
+                text = name,
+                color = color,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.End,
-                modifier = Modifier.widthIn(min = 28.dp)
+                modifier = Modifier.width(48.dp)
             )
 
             Spacer(
@@ -59,7 +62,7 @@ fun DetailsBaseStatsItem() {
             )
 
             Text(
-                text = "045",
+                text = value.toString().padStart(3, '0'),
                 fontSize = 12.sp
             )
 
@@ -68,19 +71,9 @@ fun DetailsBaseStatsItem() {
                     .fillMaxWidth()
                     .padding(start = 8.dp, end = 8.dp)
                     .clip(RoundedCornerShape(16.dp)),
-                color = AppColors.grass,
-                progress = 0.5f
+                color = color,
+                progress = progress
             )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun PreviewDetailsStats() {
-    PokedexComposeTheme {
-        Surface {
-            DetailsBaseStatsItem()
         }
     }
 }

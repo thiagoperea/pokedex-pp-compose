@@ -55,6 +55,6 @@ object DIModules {
     private val viewModelModule = module {
         viewModel { PokeListViewModel(get()) }
 
-        viewModel { PokeDetailViewModel(get()) }
+        viewModel { PokeDetailViewModel(get(), get()) }
     }
 }
